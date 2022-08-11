@@ -17,7 +17,6 @@ function loadUser() {
         const user = objects["user"]
         document.getElementById("fname").innerHTML = user["fname"];
         document.getElementById("avatar").src = user["avatar"];
-        document.getElementById("username").innerHTML = "Username : " + user["username"];
         // document.getElementById("username").innerHTML = "username : "+"panupong"
       }
     }

@@ -18,3 +18,10 @@
 #post:hover{
     background-color: deeppink;
 }
+
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 20%;
+}
