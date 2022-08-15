@@ -1,11 +1,13 @@
 
 var jwt = localStorage.getItem("jwt");
+var username = localStorage.getItem("username");
 if (jwt == null) {
   window.location.href = './login.html'
 }
 
 function loadUser() {
   const xhttp = new XMLHttpRequest();
+  console.log(username)
   xhttp.open("GET", "http://localhost:8081/token/v1/article/get");
   xhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
   xhttp.setRequestHeader("token",jwt);
@@ -15,8 +17,12 @@ function loadUser() {
       const objects = JSON.parse(this.responseText);
       if (objects["status"] == "success") {
         const user = objects["user"]
-        document.getElementById("fname").innerHTML = user["fname"];
+        // document.getElementById("fname").innerHTML = user["fname"];
+        document.getElementById("fname").innerHTML = username;
+        document.getElementById("article").innerHTML = objects["article"];
+        document.getElementById("updateuser").innerHTML = "create when "+objects["createupdate"]+ "  by " + objects["updateusername"];
         document.getElementById("avatar").src = user["avatar"];
+        
         // document.getElementById("username").innerHTML = "username : "+"panupong"
       }
     }
@@ -27,5 +33,6 @@ loadUser();
 
 function logout() {
   localStorage.removeItem("jwt");
+  localStorage.removeItem("username");
   window.location.href = './login.html'
 }

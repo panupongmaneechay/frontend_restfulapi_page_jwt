@@ -25,3 +25,24 @@
   margin-right: auto;
   width: 20%;
 }
+
+.comment {
+  border: none;
+  border-radius: 5px;
+  margin: auto;
+  display: block;
+  width: 40%;
+  background-color: pink;
+  
+}
+
+.commentbyuser {
+  border: none;
+  border-radius: 5px;
+  margin: auto;
+  display: block;
+  width: 40%;
+  background-color: greenyellow;
+  text-align: right;
+  
+}

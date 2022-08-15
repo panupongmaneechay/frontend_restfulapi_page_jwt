@@ -24,13 +24,14 @@ function login() {
       const objects = JSON.parse(this.responseText);
       if (objects['status'] == 'success') {
         localStorage.setItem("jwt", objects['accessToken']);
+        localStorage.setItem("username", username);
         //Swal == SweetAlert Show
         Swal.fire({
           text: objects['message'], //Success
           icon: 'success', 
           confirmButtonText: 'OK'
         }).then((result) => {
-            window.location.href = './index.html';
+          window.location.href = './index.html';
         });
       } else {
         Swal.fire({
