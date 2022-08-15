@@ -7,7 +7,6 @@ if (jwt == null) {
 
 function loadUser() {
   const xhttp = new XMLHttpRequest();
-  console.log(username)
   xhttp.open("GET", "http://localhost:8081/token/v1/article/get");
   xhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
   xhttp.setRequestHeader("token",jwt);
@@ -22,8 +21,6 @@ function loadUser() {
         if(objects["recordset"].length > 0){
           var updateuser = document.getElementById("article")
           for(let i = 0; objects["recordset"].length > i; i++){
-            // document.getElementById("article").innerHTML = objects["recordset"][i]["article"]  ;
-            // document.getElementById("updateuser").innerHTML = "create when "+objects["recordset"][i]["createupdate"]+ "  by " + objects["recordset"][i]["updateusername"];
             updateuser.innerHTML += ((i+1)+"."+" "+
             objects["recordset"][i]["article"] + "<br />"+"• create when "+
             objects["recordset"][i]["createupdate"]+ "  by " + 
@@ -39,9 +36,42 @@ function loadUser() {
 
 loadUser();
 
+
+function postcomments() {
+      const article = document.getElementById("comment-box").value;
+      var data = new FormData();
+      data.append("updateusername", username);
+      data.append("article", article);
+
+      var xhttp = new XMLHttpRequest();
+      xhttp.withCredentials = true;
+
+      xhttp.addEventListener("readystatechange", function() {
+        if(this.readyState === 4) {
+          console.log(this.responseText);
+        }
+      });
+
+      xhttp.open("POST", "http://localhost:8081/token/v1/article/create");
+      xhttp.setRequestHeader("token", jwt);
+
+      xhttp.send(data);
+}
+
+
 function logout() {
-  localStorage.removeItem("jwt");
-  localStorage.removeItem("username");
+  // localStorage.removeItem("jwt");
+  // localStorage.removeItem("username");
+  // localStorage.removeItem("fname");
+  // localStorage.removeItem("lname");
+  // localStorage.removeItem("tel");
+  // localStorage.removeItem("email");
+  // localStorage.removeItem("picture");
+  localStorage.clear();
   window.location.href = './login.html'
+}
+
+function editprofile() {
+  window.location.href = './profile.html';
 }
 

@@ -26,21 +26,29 @@
                 ...
               </a>
               <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <li><a class="dropdown-item" onclick="editprofile()">Edit Profile</a></li>
                 <li><a class="dropdown-item" onclick="logout()">Logout</a></li>
+                
               </ul>
             </li>
         </div>
       </div>
     </nav>
+    <div style="height:0px;overflow:hidden">
+      <input type="file" id="fileInput" name="fileInput" onchange='getImg(event)'/>
+   </div>
     <div>
       <br>
     </div>
     <div>
+        <form onsubmit="return postcomments()">
         <input type="text" id="comment-box" placeholder="Enter comment">
         
-            <button id="post">Post</button>
+            <button id="postcomment"  type="submit">Post</button>
+
         <ul id="unordered">
        </ul>
+      </form>
     </div>
     <div class="comment" id="article"></div>
     <script src="index.js"></script>

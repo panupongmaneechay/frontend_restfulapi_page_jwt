@@ -25,6 +25,11 @@ function login() {
       if (objects['status'] == 'success') {
         localStorage.setItem("jwt", objects['accessToken']);
         localStorage.setItem("username", username);
+        localStorage.setItem("firstname", objects['fname']);
+        localStorage.setItem("lastname", objects['lname']);
+        localStorage.setItem("tel", objects['tel']);
+        localStorage.setItem("email", objects['email']);
+        localStorage.setItem("picture", objects['picture']);
         //Swal == SweetAlert Show
         Swal.fire({
           text: objects['message'], //Success
